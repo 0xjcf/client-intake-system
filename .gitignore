@@ -7,7 +7,6 @@ dist/
 
 # Test files
 intake-submissions/
-project-briefs/
 
 # IDE
 .vscode/
