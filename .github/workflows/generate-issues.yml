@@ -1,0 +1,28 @@
+name: Generate Issues from Brief
+
+on:
+  push:
+    paths:
+      - "project-briefs/*.md"
+
+jobs:
+  parse-and-create:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22"
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Run Issue Generator
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          NODE_NO_WARNINGS: 1
+        run: node --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("ts-node/esm", pathToFileURL("./"));' src/scripts/create-issues-from-brief.mts

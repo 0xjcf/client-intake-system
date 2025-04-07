@@ -24,3 +24,5 @@ pnpm-debug.log*
 .env
 .env.local
 .env.*.local
+
+prompt.md
