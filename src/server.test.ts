@@ -6,6 +6,7 @@ import path from "path";
 describe("Intake API", () => {
   const testData = {
     projectName: "Test Project",
+    projectKey: "test-project",
     projectDescription: "A test project description",
     targetAudience: "Test target audience",
     keyFeatures: "Test key features",
@@ -15,16 +16,12 @@ describe("Intake API", () => {
     additionalNotes: "Test additional notes",
   };
 
-  // Store original console methods
-  const originalConsole = {
-    log: console.log,
-    error: console.error,
-  };
+  // Use Jest spies for console methods
+  let consoleErrorSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    // Mock console methods
-    console.log = jest.fn();
-    console.error = jest.fn();
+    // Setup console spy
+    consoleErrorSpy = jest.spyOn(console, "error").mockImplementation();
 
     // Ensure directories exist
     ["intake-submissions", "project-briefs"].forEach((dir) => {
@@ -35,9 +32,8 @@ describe("Intake API", () => {
   });
 
   afterEach(() => {
-    // Restore console methods
-    console.log = originalConsole.log;
-    console.error = originalConsole.error;
+    // Restore console spy
+    consoleErrorSpy.mockRestore();
 
     // Clean up test files
     const files = fs.readdirSync("intake-submissions");
@@ -62,12 +58,12 @@ describe("Intake API", () => {
       .expect(200);
 
     expect(response.text).toBe("✅ Project brief generated!");
-    expect(console.log).toHaveBeenCalledWith(
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
       expect.stringMatching(
         /✅ Intake data saved: intake-submissions\/test-project-\d+\.json/
       )
     );
-    expect(console.log).toHaveBeenCalledWith(
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
       expect.stringMatching(
         /✅ Brief generated: project-briefs\/test-project-\d+\.md/
       )
@@ -105,9 +101,9 @@ describe("Intake API", () => {
       .send({ ...testData, projectName: "" })
       .expect(400);
 
-    expect(response.text).toBe("Project name is required");
-    expect(console.error).toHaveBeenCalledWith(
-      "❌ Missing required field: projectName"
+    expect(response.text).toBe("Missing required field: projectName");
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      "❌ Error processing intake: Missing required field: projectName"
     );
   });
 });

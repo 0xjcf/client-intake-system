@@ -1,0 +1,10 @@
+services:
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./coverage:/app/coverage
+    environment:
+      - NODE_ENV=test
+    command: pnpm test:coverage 
