@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universal Project Intake Checklist</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #fff;
+        color: #111827;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #2563eb;
+      }
+      h2 {
+        font-size: 1.25rem;
+        margin-top: 2rem;
+        color: #1f2937;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      li {
+        margin-bottom: 1.25rem;
+        padding: 1rem;
+        background: #f9fafb;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+      }
+      input[type="text"],
+      textarea {
+        margin-top: 0.5rem;
+        padding: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        width: 100%;
+        font-size: 1rem;
+        min-height: 120px;
+        resize: vertical;
+      }
+      small {
+        display: block;
+        font-size: 0.875rem;
+        color: #6b7280;
+        margin-top: 0.25rem;
+      }
+      .section {
+        page-break-before: always;
+      }
+      .section:first-of-type {
+        page-break-before: auto;
+      }
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+        input,
+        textarea {
+          min-height: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Universal Project Intake Checklist</h1>
+    <p>
+      Please fill out this form to help us plan and deliver your project
+      efficiently.
+    </p>
+
+    <div class="section">
+      <h2>1. Basic Project Info</h2>
+      <ul>
+        <li>
+          <strong>Project Name</strong
+          ><small>What should we call this project?</small><input type="text" />
+        </li>
+        <li>
+          <strong>One-Sentence Summary</strong
+          ><small>High-level idea of what this project does.</small
+          ><textarea></textarea>
+        </li>
+        <li>
+          <strong>Key Stakeholders</strong
+          ><small>Who is involved and makes decisions?</small
+          ><textarea></textarea>
+        </li>
+        <li>
+          <strong>Target Launch Date</strong
+          ><small>Are there any deadlines we should know?</small
+          ><input type="text" />
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>2. Purpose & Users</h2>
+      <ul>
+        <li>
+          <strong>Main Goal</strong
+          ><small>What is this project trying to solve?</small
+          ><textarea></textarea>
+        </li>
+        <li>
+          <strong>Target Audience</strong><small>Who will use it?</small
+          ><textarea></textarea>
+        </li>
+        <li>
+          <strong>Success Criteria</strong
+          ><small>How do we know it’s working?</small><textarea></textarea>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>3. Platform & Tech</h2>
+      <ul>
+        <li>
+          <strong>Platform</strong
+          ><small>Web, Mobile App, Desktop App, Extension, etc.</small
+          ><input type="text" />
+        </li>
+        <li>
+          <strong>Tech Stack Preferences</strong
+          ><small
+            >If you already have a preferred stack (React, NestJS, etc.)</small
+          ><input type="text" />
+        </li>
+        <li>
+          <strong>AI/ML Capabilities?</strong
+          ><small>Do you want GPT, embeddings, or ML features?</small
+          ><input type="text" />
+        </li>
+        <li>
+          <strong>Real-Time Features?</strong
+          ><small>Chat, sync, notifications, sockets, etc.</small
+          ><input type="text" />
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>4. Content & Data</h2>
+      <ul>
+        <li>
+          <strong>Knowledge Sources</strong
+          ><small>Where does this product pull answers/content from?</small
+          ><textarea></textarea>
+        </li>
+        <li>
+          <strong>External APIs / Integrations</strong
+          ><small>CRM, payment, authentication, analytics, etc.</small
+          ><textarea></textarea>
+        </li>
+        <li>
+          <strong>Privacy / Compliance</strong
+          ><small>GDPR, HIPAA, CCPA — any rules?</small><input type="text" />
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>5. UI/UX & Branding</h2>
+      <ul>
+        <li>
+          <strong>Design Style</strong
+          ><small
+            >Provide branding files, fonts, color palettes if available.</small
+          ><textarea></textarea>
+        </li>
+        <li>
+          <strong>Accessibility Goals</strong
+          ><small>Any standards to meet (WCAG, keyboard nav, etc.)</small
+          ><textarea></textarea>
+        </li>
+        <li>
+          <strong>Device Responsiveness</strong
+          ><small>Desktop-first? Mobile-first? PWA?</small><input type="text" />
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>6. Admin & Control</h2>
+      <ul>
+        <li>
+          <strong>Content Management</strong
+          ><small>Do you need a dashboard to update content?</small
+          ><input type="text" />
+        </li>
+        <li>
+          <strong>User Roles / Permissions</strong
+          ><small>Different views or access for admin vs. users?</small
+          ><input type="text" />
+        </li>
+        <li>
+          <strong>Analytics & Monitoring</strong
+          ><small>What insights should be tracked?</small><textarea></textarea>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>7. Budget & Deliverables</h2>
+      <ul>
+        <li>
+          <strong>Budget Range</strong
+          ><small>Rough estimate range to work within?</small
+          ><input type="text" />
+        </li>
+        <li>
+          <strong>Expected Deliverables</strong
+          ><small>Prototype? MVP? Production-ready? Ongoing support?</small
+          ><textarea></textarea>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>8. Launch & Marketing Alignment</h2>
+      <ul>
+        <li>
+          <strong>Event/Date Driven?</strong
+          ><small>Is there a campaign, release, or launch tied to this?</small
+          ><input type="text" />
+        </li>
+        <li>
+          <strong>Marketing Needs</strong
+          ><small>Landing page, SEO, lead gen capture?</small
+          ><input type="text" />
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Final Notes</h2>
+      <ul>
+        <li>
+          <strong>Other Notes</strong
+          ><small>Anything not covered you want us to know?</small
+          ><textarea></textarea>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
