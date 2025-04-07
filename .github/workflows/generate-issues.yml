@@ -1,6 +1,7 @@
 name: Generate Issues from Brief
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "project-briefs/*.md"
