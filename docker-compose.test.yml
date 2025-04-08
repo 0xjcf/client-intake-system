@@ -3,12 +3,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.test
-    volumes:
-      - ./coverage:/app/coverage
-      - ./project-briefs:/app/project-briefs
-      - ./local-issues:/app/local-issues
     environment:
       - NODE_ENV=test
       - NODE_NO_WARNINGS=1
-      - GH_PAT=${GH_PAT}  # This will use the local GH_PAT if set
-    command: sh -c "pnpm test && pnpm run create-issues"  # Run both test and issue generation like CI 
+    command: pnpm test  # Only run tests, like CI
+
+  generate-issues:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    environment:
+      - NODE_ENV=test
+      - NODE_NO_WARNINGS=1
+      - GH_PAT=${GH_PAT}
+    command: pnpm run create-issues  # Only run issue generation, like CI 

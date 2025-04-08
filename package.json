@@ -11,7 +11,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --collectCoverageFrom='src/**/*.ts' --coverageDirectory='coverage'",
-    "test:docker": "docker-compose -f docker-compose.test.yml down --remove-orphans && docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit",
+    "test:docker": "docker-compose -f docker-compose.test.yml down --remove-orphans && docker-compose -f docker-compose.test.yml up test --build --abort-on-container-exit && docker-compose -f docker-compose.test.yml up generate-issues --build --abort-on-container-exit",
     "create-issues": "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));' src/scripts/create-issues-from-brief.mts",
     "verify-env": "./scripts/verify-env.sh",
     "lint": "eslint . --ext .ts",
