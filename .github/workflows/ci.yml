@@ -36,10 +36,12 @@ jobs:
           cache: "pnpm"
 
       - name: Install pnpm
-        run: npm install -g pnpm@latest
+        uses: pnpm/action-setup@v2
+        with:
+          version: "8"
 
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Create test brief
         run: |
@@ -67,11 +69,10 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
-          run_install: false
+          version: "8"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Run Issue Generator
         env:
