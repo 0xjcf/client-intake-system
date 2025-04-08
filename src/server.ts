@@ -30,6 +30,53 @@ void initializeDirectories();
 
 app.use(bodyParser.json());
 
+interface ProjectBriefData {
+  projectName?: string;
+  projectKey?: string;
+  projectDescription?: string;
+  targetAudience?: string;
+  keyFeatures?: string;
+  technicalRequirements?: string;
+  timeline?: string;
+  budget?: string;
+  additionalNotes?: string;
+}
+
+// Validation function for project brief data
+export function validateProjectBrief(data: ProjectBriefData): void {
+  if (!data.projectName?.trim()) {
+    throw new Error("Missing required field: projectName");
+  }
+  if (!data.projectKey?.trim()) {
+    throw new Error("Missing required field: projectKey");
+  }
+  if (!data.projectDescription?.trim()) {
+    throw new Error("Missing required field: projectDescription");
+  }
+  if (!data.targetAudience?.trim()) {
+    throw new Error("Missing required field: targetAudience");
+  }
+  if (!data.keyFeatures?.trim()) {
+    throw new Error("Missing required field: keyFeatures");
+  }
+  if (!data.technicalRequirements?.trim()) {
+    throw new Error("Missing required field: technicalRequirements");
+  }
+  if (!data.timeline?.trim()) {
+    throw new Error("Missing required field: timeline");
+  }
+  if (!data.budget?.trim()) {
+    throw new Error("Missing required field: budget");
+  }
+
+  // Validate project key format
+  if (!/^[a-z0-9-]+$/.test(data.projectKey)) {
+    throw new Error(
+      "Project key must contain only lowercase letters, numbers, and hyphens"
+    );
+  }
+}
+
 app.post(
   "/api/submit-intake",
   async (
@@ -39,38 +86,8 @@ app.post(
     const data = req.body;
 
     try {
-      // Validate required fields
-      if (!data.projectName?.trim()) {
-        throw new Error("Missing required field: projectName");
-      }
-      if (!data.projectKey?.trim()) {
-        throw new Error("Missing required field: projectKey");
-      }
-      if (!data.projectDescription?.trim()) {
-        throw new Error("Missing required field: projectDescription");
-      }
-      if (!data.targetAudience?.trim()) {
-        throw new Error("Missing required field: targetAudience");
-      }
-      if (!data.keyFeatures?.trim()) {
-        throw new Error("Missing required field: keyFeatures");
-      }
-      if (!data.technicalRequirements?.trim()) {
-        throw new Error("Missing required field: technicalRequirements");
-      }
-      if (!data.timeline?.trim()) {
-        throw new Error("Missing required field: timeline");
-      }
-      if (!data.budget?.trim()) {
-        throw new Error("Missing required field: budget");
-      }
-
-      // Validate project key format
-      if (!/^[a-z0-9-]+$/.test(data.projectKey)) {
-        throw new Error(
-          "Project key must contain only lowercase letters, numbers, and hyphens"
-        );
-      }
+      // Validate the request data
+      validateProjectBrief(data);
 
       const timestamp = Date.now();
       const sanitizedName = data.projectName
