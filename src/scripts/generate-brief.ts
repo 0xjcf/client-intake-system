@@ -86,7 +86,7 @@ ${
   return brief;
 };
 
-const main = async (): Promise<void> => {
+export const main = async (): Promise<void> => {
   try {
     const filename = process.argv[2];
     if (!filename) {
@@ -138,7 +138,9 @@ const main = async (): Promise<void> => {
         error instanceof Error ? error.message : String(error)
       }`
     );
-    process.exit(1);
+    if (process.env.NODE_ENV !== "test") {
+      process.exit(1);
+    }
   }
 };
 

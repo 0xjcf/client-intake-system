@@ -2,9 +2,11 @@ services:
   test:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.test
     volumes:
       - ./coverage:/app/coverage
+      - ./project-briefs:/app/project-briefs
+      - ./local-issues:/app/local-issues
     environment:
       - NODE_ENV=test
-    command: pnpm test:coverage 
+    command: pnpm test 

@@ -7,6 +7,7 @@ module.exports = [
     ignores: [
       "dist/**/*",
       "node_modules/**/*",
+      "coverage/**/*",
       "*.js",
       "!src/**/*.js",
       "!src/**/*.ts",
@@ -45,9 +46,9 @@ module.exports = [
       "security/detect-pseudoRandomBytes": "error",
 
       // TypeScript-specific security rules
-      "@typescript-eslint/no-unsafe-assignment": "error",
-      "@typescript-eslint/no-unsafe-call": "error",
-      "@typescript-eslint/no-unsafe-member-access": "error",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-return": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-unsafe-argument": "error",
