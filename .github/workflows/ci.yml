@@ -36,7 +36,10 @@ jobs:
           cache: "pnpm"
 
       - name: Install pnpm
-        run: npm install -g pnpm@latest
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -65,7 +68,10 @@ jobs:
           cache: "pnpm"
 
       - name: Install pnpm
-        run: npm install -g pnpm@latest
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

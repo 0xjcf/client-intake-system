@@ -9,4 +9,6 @@ services:
       - ./local-issues:/app/local-issues
     environment:
       - NODE_ENV=test
-    command: pnpm test 
+      - NODE_NO_WARNINGS=1
+      - GH_PAT=${GH_PAT}  # This will use the local GH_PAT if set
+    command: sh -c "pnpm test && pnpm run create-issues"  # Run both test and issue generation like CI 

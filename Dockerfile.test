@@ -1,9 +1,9 @@
-FROM node:20-slim
+FROM node:22-slim
 
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm
+# Install pnpm using the same method as GitHub Actions
+RUN npm install -g pnpm@latest
 
 # Copy package files
 COPY package.json pnpm-lock.yaml ./
@@ -18,5 +18,6 @@ COPY . .
 RUN mkdir -p project-briefs/test && \
     echo '{"projectName":"Test Bot","projectKey":"test-bot","projectDescription":"A test bot","targetAudience":"Test users","keyFeatures":"Test features","technicalRequirements":"Test requirements","timeline":"1 week","budget":"$1000","additionalNotes":"Test notes"}' > project-briefs/test/test-bot.json
 
-# Set environment variables
-ENV NODE_ENV=test 
+# Set environment variables to match CI
+ENV NODE_ENV=test
+ENV NODE_NO_WARNINGS=1 
