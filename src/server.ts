@@ -4,6 +4,7 @@ import { IntakeFormData } from "./types/intake";
 import fs from "fs/promises";
 import path from "path";
 import { generateBrief } from "./scripts/generate-brief";
+import { ProjectBriefData } from "./types/project-brief";
 
 // Add type declaration for Node.js globals
 declare const __dirname: string;
@@ -29,18 +30,6 @@ const initializeDirectories = async (): Promise<void> => {
 void initializeDirectories();
 
 app.use(bodyParser.json());
-
-interface ProjectBriefData {
-  projectName?: string;
-  projectKey?: string;
-  projectDescription?: string;
-  targetAudience?: string;
-  keyFeatures?: string;
-  technicalRequirements?: string;
-  timeline?: string;
-  budget?: string;
-  additionalNotes?: string;
-}
 
 // Validation function for project brief data
 export function validateProjectBrief(data: ProjectBriefData): void {
